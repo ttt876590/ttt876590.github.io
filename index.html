@@ -18,24 +18,51 @@
         </ul>
     </div>
 
-    <!-- 音频区 -->
+    <!-- 新增：内容区域容器 -->
+    <div class="main-content">
+        <!-- 音频区 -->
+        <h2 class="section-title" id="audio">🎵 音频列表</h2>
+        <div class="media-container">
+
+            <!-- 音频1，秦半两 -->
+            <div class="media-card">
+                <img src="images/秦半两.png" class="media-cover" alt="音频封面">
+                <h3 class="media-title">秦半两</h3>
+                <p class="media-desc">历史作业 | 七年级上册</p>
+                <audio controls class="audio-player">
+                    <source src="audio/秦半两配音.mp3" type="audio/mpeg">
+                    你的浏览器不支持音频播放
+                </audio>
+            </div>
+
+        <!-- 视频区 -->
+        <h2 class="section-title" id="video">🎬 视频列表</h2>
+        <div class="media-container">...</div> <!-- 即使空内容，也有最小高度 -->
+
+        <!-- 文字区 -->
+        <h2 class="section-title" id="text">📝 文字内容</h2>
+        <div class="text-section">...</div> <!-- 即使空内容，也有最小高度 -->
+    </div>
+    <!-- 闭合内容区域容器 -->
+
+    <!-- 页脚 -->
+    <div class="footer" id="about">
+        <p>我的网站 | 支持音频、视频、文字展示</p>
+        <p>© 2024 多媒体库 | 本地可修改更新</p>
+    </div>
+</body>
+
+    
+
+    <!-- 音频区 
     <h2 class="section-title" id="audio">🎵 音频列表</h2>
     <div class="media-container">
-        <!-- 音频1，秦半两 -->
-        <div class="media-card">
-            <img src="images/秦半两.png" class="media-cover" alt="音频封面">
-            <h3 class="media-title">秦半两</h3>
-            <p class="media-desc">历史作业 | 七年级上册</p>
-            <audio controls class="audio-player">
-                <source src="audio/秦半两配音.mp3" type="audio/mpeg">
-                你的浏览器不支持音频播放
-            </audio>
-        </div>
+        
 
-    <!-- 视频区（新增） -->
+     视频区（新增） 
     <h2 class="section-title" id="video">🎬 视频列表</h2>
     <div class="media-container">
-        <!-- 视频1（示例） 
+        视频1（示例） 
         <div class="media-card">
             <img src="images/video-cover1.jpg" class="media-cover" alt="视频封面">
             <h3 class="media-title">海边日出</h3>
@@ -45,12 +72,12 @@
                 你的浏览器不支持视频播放
              </video>
         </div>
-        -->
+        
 
-    <!-- 文字区（新增） -->
+     文字区（新增） 
     <h2 class="section-title" id="text">📝 文字内容</h2>
     <div class="text-section">
-        <!-- 文字文章1（示例） 
+         文字文章1（示例） 
         <div class="text-card">
             <h3 class="text-title">旅行日记：海边的一天</h3>
             <div class="text-content">
@@ -60,12 +87,8 @@
                 <p>傍晚的时候，夕阳把天空染成了橘红色，这种自然的美景让人忘记了所有烦恼。</p>
             </div>
         </div>
-      -->
+      
 
-    <!-- 页脚 -->
-    <div class="footer" id="about">
-        <p>我的网站 | 支持音频、视频、文字展示</p>
-        <p>© 2024 多媒体库 | 本地可修改更新</p>
-    </div>
-</body>
+     页脚 -->
+        
 </html>

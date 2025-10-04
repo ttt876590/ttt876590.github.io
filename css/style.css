@@ -11,6 +11,25 @@ body {
     line-height: 1.6;
     padding-bottom: 50px;
 }
+/* 确保页面占满屏幕高度，页脚始终在底部 */
+html, body {
+    height: 100%; /* 让html和body占满屏幕高度 */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* 垂直排列内容 */
+}
+
+/* 内容区域自动填充剩余空间，撑起页面 */
+.main-content {
+    flex: 1; /* 占据除页脚外的所有空间 */
+}
+
+/* 给空内容区域添加最小高度，避免布局塌陷 */
+.media-container:empty, .text-section:empty {
+    min-height: 100px; /* 即使没有内容，也保留100px高度 */
+}
 
 /* 导航栏 */
 .nav {
