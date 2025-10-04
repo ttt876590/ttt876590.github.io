@@ -3,55 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的网站</title>
-    <!-- 引入样式文件（无需修改） -->
+    <title>多媒体网站（音频+视频+文字）</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 导航栏（可修改网站标题） -->
+    <!-- 导航栏 -->
     <div class="nav">
-        <h1>我的网站</h1> <!-- 可修改为你的网站名称，如“个人播客站” -->
+        <h1>我的网站</h1> <!-- 可修改网站名称 -->
         <ul class="menu">
-            <li><a href="index.html">首页</a></li>
-            <li><a href="#music">历史作业分类</a></li> <!-- 可修改分类名称 -->
+            <li><a href="#audio">音频</a></li>
+            <li><a href="#video">视频</a></li>
+            <li><a href="#text">文字</a></li>
             <li><a href="#about">关于</a></li>
         </ul>
     </div>
 
-    <!-- 音频列表（核心修改区：添加/删除音频卡片） -->
-    <div class="audio-container">
-        <!-- 音频卡片1：（历史作业分类） -->
-        <div class="audio-card" id="music">
-            <img src="images/秦半两.png" class="audio-cover" alt="音频封面"> <!-- 替换为你的封面图片路径 -->
-            <h3 class="audio-title">秦半两音频讲解</h3> <!-- 替换为你的音频标题 -->
-            <p>历史作业</p> <!-- 替换为音频描述（如类型、时长） -->
-            <!-- 音频播放器：src替换为你的本地音频路径 -->
+    <!-- 音频区 -->
+    <h2 class="section-title" id="audio">🎵 音频列表</h2>
+    <div class="media-container">
+        <!-- 音频1，秦半两 -->
+        <div class="media-card">
+            <img src="images/秦半两.png" class="media-cover" alt="音频封面">
+            <h3 class="media-title">秦半两</h3>
+            <p class="media-desc">历史作业 | 七年级上册</p>
             <audio controls class="audio-player">
-                <source src="audio/秦半两配音.mp3" type="audio/mpeg"> <!-- 本地音频文件路径 -->
-                你的浏览器不支持音频播放，请更新浏览器！
+                <source src="audio/秦半两配音.mp3" type="audio/mpeg">
+                你的浏览器不支持音频播放
             </audio>
         </div>
 
-
-        <!-- 新增音频卡片：复制上面的“audio-card”模块，修改内容即可 -->
-        <!-- 例如：
-        <div class="audio-card" id="music">
-            <img src="images/cover3.jpg" class="audio-cover" alt="音频封面">
-            <h3 class="audio-title">新音频标题</h3>
-            <p>音频类型 | 时长</p>
-            <audio controls class="audio-player">
-                <source src="audio/新音频文件名.mp3" type="audio/mpeg">
-                你的浏览器不支持音频播放，请更新浏览器！
-            </audio>
+    <!-- 视频区（新增） -->
+    <h2 class="section-title" id="video">🎬 视频列表</h2>
+    <div class="media-container">
+        <!-- 视频1（示例） 
+        <div class="media-card">
+            <img src="images/video-cover1.jpg" class="media-cover" alt="视频封面">
+            <h3 class="media-title">海边日出</h3>
+            <p class="media-desc">风景延时 | 1分30秒</p>
+            <video controls class="video-player" poster="images/video-cover1.jpg">
+                <source src="video/seaside-sunrise.mp4" type="video/mp4">
+                你的浏览器不支持视频播放
+             </video>
         </div>
         -->
-    </div>
 
-    <!-- 关于板块（可修改个人信息） -->
+    <!-- 文字区（新增） -->
+    <h2 class="section-title" id="text">📝 文字内容</h2>
+    <div class="text-section">
+        <!-- 文字文章1（示例） 
+        <div class="text-card">
+            <h3 class="text-title">旅行日记：海边的一天</h3>
+            <div class="text-content">
+                <p>今天早起去了海边，日出时分的景色真的太美了。海水是渐变的蓝色，远处的渔船像剪影一样在晨光中移动。</p>
+                <img src="images/travel-sea.jpg" alt="海边照片">
+                <p>中午在附近的小店吃了海鲜面，味道很新鲜。下午沿着沙滩散步，捡了一些贝壳，还看到了几只海鸥。</p>
+                <p>傍晚的时候，夕阳把天空染成了橘红色，这种自然的美景让人忘记了所有烦恼。</p>
+            </div>
+        </div>
+      -->
+
+    <!-- 页脚 -->
     <div class="footer" id="about">
-        <p>我的网站 | 所有文件可本地修改更新</p>
-        <p>联系我：无</p> <!-- 可修改为你的联系方式（可选） -->
-        <p>© 2024 我的网站 | 保留所有权利</p>
+        <p>我的网站 | 支持音频、视频、文字展示</p>
+        <p>© 2024 多媒体库 | 本地可修改更新</p>
     </div>
 </body>
 </html>

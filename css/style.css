@@ -1,4 +1,4 @@
-/* 网站整体样式 */
+/* 基础样式（保持原有，新增视频和文字相关样式） */
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +9,10 @@ body {
     background-color: #f5f5f5;
     color: #333;
     line-height: 1.6;
+    padding-bottom: 50px;
 }
 
-/* 导航栏样式 */
+/* 导航栏 */
 .nav {
     background-color: #2c3e50;
     color: white;
@@ -27,6 +28,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap; /* 适配手机屏幕 */
 }
 .nav .menu a {
     color: white;
@@ -37,18 +39,29 @@ body {
     color: #3498db;
 }
 
-/* 音频列表容器 */
-.audio-container {
+/* 板块标题（新增：用于区分音频/视频/文字区） */
+.section-title {
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 40px auto 20px;
+    padding: 0 20px;
+    font-size: 22px;
+    color: #2c3e50;
+    border-left: 4px solid #3498db;
+    padding-left: 15px;
+}
+
+/* 音频/视频列表容器（复用原有结构，支持响应式） */
+.media-container {
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 0 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
-/* 单个音频卡片样式 */
-.audio-card {
+/* 音频/视频卡片样式 */
+.media-card {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -56,12 +69,12 @@ body {
     text-align: center;
     transition: transform 0.3s;
 }
-.audio-card:hover {
-    transform: translateY(-5px); /* 鼠标悬浮时轻微上浮 */
+.media-card:hover {
+    transform: translateY(-5px);
 }
 
-/* 音频封面样式 */
-.audio-cover {
+/* 封面图样式 */
+.media-cover {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -69,24 +82,79 @@ body {
     margin-bottom: 15px;
 }
 
-/* 音频标题样式 */
-.audio-title {
+/* 标题和描述 */
+.media-title {
     font-size: 18px;
     margin-bottom: 10px;
     color: #2c3e50;
 }
+.media-desc {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
 
-/* 音频播放器样式 */
+/* 音频播放器 */
 .audio-player {
     width: 100%;
     margin-top: 10px;
 }
 
-/* 页脚样式 */
+/* 视频播放器（新增） */
+.video-player {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* 文字内容区域（新增） */
+.text-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.text-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.text-title {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.text-content {
+    line-height: 1.8;
+    color: #555;
+}
+.text-content p {
+    margin-bottom: 15px;
+}
+.text-content img {
+    max-width: 100%; /* 文字中的图片自适应 */
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* 页脚 */
 .footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 50px;
     background-color: #2c3e50;
     color: white;
+}
+
+/* 适配手机屏幕 */
+@media (max-width: 768px) {
+    .media-container {
+        grid-template-columns: 1fr; /* 手机上单列显示 */
+    }
+    .nav .menu {
+        gap: 15px;
+    }
 }
