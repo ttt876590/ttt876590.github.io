@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的网站</title>
+    <!-- 引入样式文件（无需修改） -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏（可修改网站标题） -->
+    <div class="nav">
+        <h1>我的网站</h1> <!-- 可修改为你的网站名称，如“个人播客站” -->
+        <ul class="menu">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="#music">历史作业分类</a></li> <!-- 可修改分类名称 -->
+            <li><a href="#about">关于</a></li>
+        </ul>
+    </div>
+
+    <!-- 音频列表（核心修改区：添加/删除音频卡片） -->
+    <div class="audio-container">
+        <!-- 音频卡片1：（历史作业分类） -->
+        <div class="audio-card" id="music">
+            <img src="images/秦半两.png" class="audio-cover" alt="音频封面"> <!-- 替换为你的封面图片路径 -->
+            <h3 class="audio-title">秦半两音频讲解</h3> <!-- 替换为你的音频标题 -->
+            <p>历史作业</p> <!-- 替换为音频描述（如类型、时长） -->
+            <!-- 音频播放器：src替换为你的本地音频路径 -->
+            <audio controls class="audio-player">
+                <source src="audio/秦半两配音.mp3" type="audio/mpeg"> <!-- 本地音频文件路径 -->
+                你的浏览器不支持音频播放，请更新浏览器！
+            </audio>
+        </div>
+
+
+        <!-- 新增音频卡片：复制上面的“audio-card”模块，修改内容即可 -->
+        <!-- 例如：
+        <div class="audio-card" id="music">
+            <img src="images/cover3.jpg" class="audio-cover" alt="音频封面">
+            <h3 class="audio-title">新音频标题</h3>
+            <p>音频类型 | 时长</p>
+            <audio controls class="audio-player">
+                <source src="audio/新音频文件名.mp3" type="audio/mpeg">
+                你的浏览器不支持音频播放，请更新浏览器！
+            </audio>
+        </div>
+        -->
+    </div>
+
+    <!-- 关于板块（可修改个人信息） -->
+    <div class="footer" id="about">
+        <p>我的网站 | 所有文件可本地修改更新</p>
+        <p>联系我：无</p> <!-- 可修改为你的联系方式（可选） -->
+        <p>© 2024 我的网站 | 保留所有权利</p>
+    </div>
+</body>
+</html>
