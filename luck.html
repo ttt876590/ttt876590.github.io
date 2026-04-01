@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍀 未来运势测试</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","微软雅黑",sans-serif;}
+        body{background:linear-gradient(135deg,#fff3e0,#ffe0b2,#ff5722);background-size:200% 200%;animation:bgGradient 6s infinite alternate;padding:20px;min-height:100vh;max-width:400px;margin:0 auto;}
+        @keyframes bgGradient{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+        .card{background:white;border-radius:32px;padding:36px;margin-bottom:20px;box-shadow:0 12px 32px rgba(0,0,0,0.07);animation:cardFadeIn 0.7s ease forwards;opacity:0;transform:translateY(30px);}
+        @keyframes cardFadeIn{to{opacity:1;transform:translateY(0);}}
+        .title{color:#ff5722;font-size:28px;text-align:center;margin-bottom:10px;font-weight:bold;}
+        .sub-title{text-align:center;color:#666;margin-bottom:30px;font-size:15px;}
+        .question{font-size:19px;color:#333;margin:24px 0;line-height:1.7;text-align:center;animation:questionPop 0.5s ease;font-weight:500;}
+        @keyframes questionPop{0%{opacity:0;transform:scale(0.9) translateY(10px);}100%{opacity:1;transform:scale(1) translateY(0);}}
+        .btn{background:#ff5722;color:white;border:none;border-radius:30px;padding:17px;width:100%;font-size:16px;margin:10px 0;cursor:pointer;transition:all 0.3s ease;box-shadow:0 6px 14px rgba(255,87,34,0.25);position:relative;overflow:hidden;}
+        .btn:before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s;}
+        .btn:hover:before{left:100%;}
+        .btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(255,87,34,0.35);}
+        .btn:active{transform:scale(0.96);}
+        .result-title{font-size:26px;color:#ff5722;text-align:center;margin:20px 0;font-weight:bold;animation:resultBigPop 0.7s ease;}
+        @keyframes resultBigPop{0%{transform:scale(0.7);opacity:0;}50%{transform:scale(1.12);}100%{transform:scale(1);opacity:1;}}
+        .result-desc{font-size:17px;color:#444;line-height:1.9;margin:14px 0;text-align:center;animation:fadeUp 0.6s ease 0.2s forwards;opacity:0;}
+        @keyframes fadeUp{to{opacity:1;transform:translateY(0);}from{opacity:0;transform:translateY(10px);}}
+        .restart{background:#fff;color:#ff5722;border:2px solid #ff5722;margin-top:25px;}
+        .progress{width:100%;height:8px;background:#f5f5f5;border-radius:10px;margin:20px 0;overflow:hidden;}
+        .progress-bar{height:100%;background:linear-gradient(90deg,#ff5722,#ff7043);width:0%;transition:width 0.4s cubic-bezier(0.25,0.8,0.25,1);border-radius:10px;}
+        .tip{text-align:center;font-size:13px;color:#999;margin-top:12px;}
+    </style>
+</head>
+<body>
+<div class="card" id="startBox">
+    <h1 class="title">🍀 未来运势测试</h1>
+    <p class="sub-title">20题测出你接下来的好运</p>
+    <button class="btn" onclick="startTest()">开始测试</button>
+    <div class="tip">💡 凭第一直觉选，结果超准！</div>
+</div>
+<div class="card" id="testBox" style="display:none;">
+    <div class="progress"><div class="progress-bar" id="progress"></div></div>
+    <div id="questionArea"></div>
+    <button class="btn" onclick="next(1)">A 完全符合</button>
+    <button class="btn" onclick="next(2)">B 比较符合</button>
+    <button class="btn" onclick="next(3)">C 不太符合</button>
+    <button class="btn" onclick="next(4)">D 完全不符合</button>
+</div>
+<div class="card" id="resultBox" style="display:none;">
+    <div id="resultArea"></div>
+    <button class="btn restart" onclick="restartTest()">重新测试</button>
+</div>
+<script>
+    let score=0,current=0;
+    const questions=[
+        "1. 你最近心态很平和。","2. 你对未来充满期待。","3. 你做事很认真努力。","4. 你待人真诚善良。","5. 你懂得感恩生活。","6. 你愿意接受新机会。","7. 你很少抱怨生活。","8. 你相信自己会变好。","9. 你对生活有仪式感。","10. 你愿意帮助别人。","11. 你作息规律，爱护自己。","12. 你正在慢慢变优秀。","13. 你对小事也保持乐观。","14. 你不放弃自己的目标。","15. 你远离消耗你的人。","16. 你喜欢给自己打气。","17. 你愿意学习新东西。","18. 你珍惜身边的人。","19. 你相信越努力越幸运。","20. 你值得所有美好事物。"
+    ];
+    const results=[
+        {title:"🍀 平稳好运期",desc:"你接下来运势平稳顺畅，生活安逸舒服，没有大烦恼，小惊喜不断，平安喜乐就是最好的运气～"},
+        {title:"✨ 小旺运来袭",desc:"你马上要走小旺运啦！工作/学习顺利，心情变好，贵人悄悄出现，想要的事情都会慢慢如愿！"},
+        {title:"💫 人气财运旺",desc:"你接下来人气爆棚、财运上升！人缘变好、机会变多，不管是赚钱还是交友，都顺顺利利！"},
+        {title:"🌟 逆袭好运程",desc:"你即将迎来逆袭好运！之前的努力会开花结果，困境散去、好运降临，生活会明显往上走！"},
+        {title:"🔥 超级旺运年",desc:"你接下来旺到离谱！事业、财运、感情全线向好，机会超多，只要抓住，就能一路开挂！"},
+        {title:"🌈 心想事成运",desc:"你接下来心想事成！心里期待的事大概率会实现，贵人相助、万事顺遂，幸福和惊喜都会奔向你！"}
+    ];
+    function startTest(){score=0;current=0;startBox.style.display="none";testBox.style.display="block";updateProgress();showQuestion();}
+    function showQuestion(){questionArea.innerHTML=`<div class="question">${questions[current]}</div>`;}
+    function updateProgress(){progress.style.width=(current/questions.length)*100+"%";}
+    function next(point){score+=point;current++;updateProgress();if(current<questions.length)showQuestion();else showResult();}
+    function showResult(){testBox.style.display="none";resultBox.style.display="block";let level;if(score<=30)level=0;else if(score<=40)level=1;else if(score<=50)level=2;else if(score<=60)level=3;else if(score<=70)level=4;else level=5;resultArea.innerHTML=`<h2 class="result-title">${results[level].title}</h2><p class="result-desc">${results[level].desc}</p>`;}
+    function restartTest(){resultBox.style.display="none";startBox.style.display="block";}
+</script>
+</body>
+</html>
